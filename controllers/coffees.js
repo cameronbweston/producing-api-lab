@@ -30,8 +30,8 @@ function show(req, res) {
 
 function create(req, res) {
     Coffee.create(req.body)
-    .then(puppy => {
-        res.json(puppy)
+    .then(coffee => {
+        res.json(coffee)
     })
     .catch(err => {
         res.json(err)
@@ -39,9 +39,9 @@ function create(req, res) {
 }
 
 function update(req, res) {
-    Puppy.findByIdAndUpdate(req.params.id, req.body, {new: true})
-    .then(puppy => {
-        res.json(puppy)
+    Coffee.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .then(coffee => {
+        res.json(coffee)
     })
 }
 

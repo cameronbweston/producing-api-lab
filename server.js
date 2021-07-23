@@ -1,15 +1,15 @@
 import 'dotenv/config.js'
-console.log(process.env.DATABASE_URL)
 import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
+import { router as indexRouter } from './routes/index.js'
+import { router as apiRouter } from './routes/api.js'
 
 import './config/database.js'
 const app = express()
-import { router as indexRouter } from './routes/index.js'
 
 // view engine setup
 app.set(
@@ -29,7 +29,7 @@ app.use(
 )
 
 app.use('/', indexRouter)
-//app.use('/api', apiRouter)
+app.use('/api', apiRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
